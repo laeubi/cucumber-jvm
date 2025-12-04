@@ -8,7 +8,7 @@ Options:
   -g, --glue PATH                          Package to load glue code (step
                                            definitions, hooks and plugins) from.
                                            When not provided Cucumber will
-                                           search the classpath root.
+                                           search the entire classpath.
 
                                            The glue path can be specified using
                                            one of the following formats:
