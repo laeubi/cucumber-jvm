@@ -22,7 +22,7 @@ Options:
                                            Absolute path:
                                              /com/example/app
 
-                                           Classpath URI:
+                                           Classpath URI (both forms are equivalent):
                                              classpath:com/example/app
                                              classpath:/com/example/app
 
@@ -40,6 +40,9 @@ Options:
                                            name 'com.example.app' instead, as
                                            Cucumber searches for glue on the
                                            classpath, not in source directories.
+                                           Cucumber will log a warning if a
+                                           well-known source directory path is
+                                           detected.
 
                                            This option can be specified multiple
                                            times to include glue from multiple
