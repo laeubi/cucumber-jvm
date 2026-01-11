@@ -6,10 +6,47 @@ Options:
                                            Defaults to 1.
 
   -g, --glue PATH                          Package to load glue code (step
-                                           definitions, hooks and plugins) from
-                                           e.g: com.example.app. When not
-                                           provided Cucumber will search the
-                                           classpath.
+                                           definitions, hooks and plugins) from.
+                                           When not provided Cucumber will
+                                           search the entire classpath.
+
+                                           The glue path can be specified using
+                                           one of the following formats:
+
+                                           Package name (recommended):
+                                             com.example.app
+
+                                           Relative path:
+                                             com/example/app
+
+                                           Absolute path:
+                                             /com/example/app
+
+                                           Classpath URI (both forms are equivalent):
+                                             classpath:com/example/app
+                                             classpath:/com/example/app
+
+                                           Root package (all glue code):
+                                             "" (empty string)
+                                             classpath:
+                                             classpath:/
+
+                                           On Windows, backslashes can be used:
+                                             com\example\app
+
+                                           Note: Using file system paths like
+                                           'src/main/java/com/example/app' is
+                                           not recommended. Use the package
+                                           name 'com.example.app' instead, as
+                                           Cucumber searches for glue on the
+                                           classpath, not in source directories.
+                                           Cucumber will log a warning if a
+                                           well-known source directory path is
+                                           detected.
+
+                                           This option can be specified multiple
+                                           times to include glue from multiple
+                                           packages.
 
   -p, --plugin PLUGIN[:[PATH|[URI [OPTIONS]]]
                                            Register a plugin.
@@ -144,8 +181,10 @@ cucumber.filter.tags=           # a cucumber tag expression.
                                 # combined with cucumber.filter.name using "and" semantics.
                                 # example: @Cucumber and not (@Gherkin or @Zucchini)
 
-cucumber.glue=                  # comma separated package names.
+cucumber.glue=                  # comma separated package names or paths.
+                                # See -g, --glue for supported formats.
                                 # example: com.example.glue
+                                # example: com.example.app,com.example.common
 
 cucumber.plugin=                # comma separated plugin strings.
                                 # example: pretty, json:path/to/report.json
